@@ -2,7 +2,7 @@
 
 - 이 프로젝트는 GAD SDK를 적용한 샘플앱으로 아래 가이드 한 내용을 포함하고 있습니다.
 - GAD 오퍼월 사이트에 앱 등록은 [GAD 미디어 설정하기](https://github.com/koreagpa-dev/gad-sample-android/blob/master/guide_media.md#gad-%EB%AF%B8%EB%94%94%EC%96%B4-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0) 페이지를 참고 바랍니다.
-- API 문서는 [GAD API DOCUMENT](https://github.com/koreagpa-dev/gad-sample-android/blob/master/api-doc.md) 페이지를 참고 바랍니다.
+- API 문서는 [GAD API DOCUMENT](https://github.com/koreagpa-dev/gad-sample-android/blob/master/api-doc.md#gad-api-document) 페이지를 참고 바랍니다.
 
 
 ## AndroidX 마이그레이션
