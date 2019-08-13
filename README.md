@@ -2,6 +2,7 @@
 
 - 이 프로젝트는 GAD SDK를 적용한 샘플앱으로 아래 가이드 한 내용을 포함하고 있습니다.
 - GAD 오퍼월 사이트에 앱 등록은 [GAD 미디어 설정하기](https://github.com/koreagpa-dev/gad-sample-android/blob/master/guide_media.md#gad-%EB%AF%B8%EB%94%94%EC%96%B4-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0) 페이지를 참고 바랍니다.
+- API 문서는 [GAD API DOCUMENT](https://github.com/koreagpa-dev/gad-sample-android/blob/master/api-doc.md) 페이지를 참고 바랍니다.
 
 
 ## AndroidX 마이그레이션
@@ -12,18 +13,27 @@
     - AndroidX 개요 : https://developer.android.com/jetpack/androidx?hl=ko
     - AndroidX로 이전 : https://developer.android.com/jetpack/androidx/migrate#migrate
 
-## MultiDex 활성
-- GAD SDK를 사용하기 위해서는 MultiDex를 활성화 해야 합니다.
-- 모듈 수준의 build.gradle 파일에서 multiDexEnabled를 true로 설정합니다.
+## Gradle 설정
+- 모듈 수준의 build.gradle 파일에서 아래 코드를 추가합니다.
 
 ```groovy
 android {
     defaultConfig {
         multiDexEnabled true
     }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 ```
-- 참고 사이트 : https://developer.android.com/studio/build/multidex.html?hl=ko
+- 참고 사이트
+    - MultiDex : https://developer.android.com/studio/build/multidex.html?hl=ko
+    - 데이터바인딩 : https://developer.android.com/topic/libraries/data-binding/start.html?hl=ko
+    - Java 8 : https://developer.android.com/studio/write/java8-support?hl=ko
 
 ## GAD SDK 라이브러리 사용
 #### 프로젝트 설정
@@ -52,6 +62,7 @@ dependencies {
 ```java
 public class MainActivity extends AppCompatActivity {
     
+    // GAD 초기화 함수. 가장 먼저 호출 필요
     // (로그인 후 1회만) 앱 로그인 완료 후 미디어키와 유저ID(유저를 식별할 수 있는 유니크한 값)로 초기화 한다.
     private void initializeGad(String mediaKey, String userId) {
         Gad.init(this, mediaKey, userId);
@@ -72,3 +83,4 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 - 광고 참여를 완료하면 [미디어에 등록된 URL로 포스트백](https://github.com/koreagpa-dev/gad-sample-android/blob/master/guide_media.md#%EB%AF%B8%EB%94%94%EC%96%B4-%EC%97%B0%EB%8F%99-%EC%A0%95%EB%B3%B4-%EC%9E%85%EB%A0%A5%ED%95%98%EA%B8%B0)을 전송합니다.
+    - 링크 : [포스트백 API DOCUMENT](https://github.com/koreagpa-dev/gad-sample-android/blob/master/api-doc.md#%ED%8F%AC%EC%8A%A4%ED%8A%B8%EB%B0%B1)
