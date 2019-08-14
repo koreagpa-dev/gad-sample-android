@@ -84,3 +84,28 @@ public class MainActivity extends AppCompatActivity {
 
 - 광고 참여를 완료하면 [미디어에 등록된 URL로 포스트백](https://github.com/koreagpa-dev/gad-sample-android/blob/master/guide_media.md#%EB%AF%B8%EB%94%94%EC%96%B4-%EC%97%B0%EB%8F%99-%EC%A0%95%EB%B3%B4-%EC%9E%85%EB%A0%A5%ED%95%98%EA%B8%B0)을 전송합니다.
     - 링크 : [포스트백 API DOCUMENT](https://github.com/koreagpa-dev/gad-sample-android/blob/master/api-doc.md#%ED%8F%AC%EC%8A%A4%ED%8A%B8%EB%B0%B1)
+    
+#### API 방식 사용시
+- GAD 광고 참여시 내부 로직을 사용하므로 SDK 연동은 동일하게 필요합니다.
+- [광고목록](https://github.com/koreagpa-dev/gad-sample-android/blob/master/api-doc.md#%EA%B4%91%EA%B3%A0-%EB%AA%A9%EB%A1%9D)을 요청해서 리스트를 구성합니다.
+- 리스트 아이템이 클릭 됐을때 GAD 광고인지 체크해서 분기해 줍니다.
+```java
+public class MainActivity extends AppCompatActivity {
+    
+    // GAD 초기화 함수. 가장 먼저 호출 필요
+    // (로그인 후 1회만) 앱 로그인 완료 후 미디어키와 유저ID(유저를 식별할 수 있는 유니크한 값)로 초기화 한다.
+    private void initializeGad(String mediaKey, String userId) {
+        Gad.init(this, mediaKey, userId);
+    }
+
+    // 리스트 아이템 클릭 시 GAD 광고인 경우 SDK를 통해 광고 상세 화면으로 이동한다.
+    private void onItemClick(...) {
+        if (클릭된 광고가 GAD 인 경우) {
+            Gad.goDetail(MainActivity.this, "{광고키}");
+        } else {
+            ...
+        }
+    }
+}
+```
+- 상세화면으로 이동후의 과정은 SDK 방식과 동일합니다.
