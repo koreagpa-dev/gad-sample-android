@@ -2,7 +2,7 @@
 
 ## 광고 목록
 #### URL : https://gad.api.gpakorea.com/advertisement/list
-#### REQUEST
+#### REQUEST (GET)
 | 파라미터 | 내용 |
 | ------------------- | ------------------- |
 | media | 미디어키 |
@@ -37,6 +37,46 @@
 | summary | 개요 |
 | description | 상세설명 |
 | image1 | 광고 이미지 |
+
+## 광고 참여 요청
+#### URL : https://gad.api.gpakorea.com/advertisement/join
+#### REQUEST (POST)
+| 파라미터 | 내용 |
+| --- | --- |
+| media | 미디어키 |
+| adKey | 광고키 |
+| uid | 유저 ID |
+| adid | 유저 ADID |
+| info | SDK 예약 필드 |
+| data | 매체사 데이터 (포스트백에서 전송받을 데이터) |
+#### RESPONSE
+| 파라미터 | 내용 |
+| ------------------- | ------------------- |
+| code | 결과 CODE |
+| message | 결과 메시지 |
+| **join** | 참여 요청 결과 (optional) |
+#### join
+| 파라미터 | 내용 |
+| ------------------- | ------------------- |
+| ... | SDK 에약 필드 |
+| url | 이 값이 존재하는 경우 광고 URL로 사용해야함 |
+
+## 광고참여완료
+- 유저가 광고 참여를 완료(앱 설치등) 했을때 호출
+#### URL : https://gad.api.gpakorea.com/advertisement/complete
+#### REQUEST (POST)
+| 파라미터 | 내용 |
+| --- | --- |
+| media | 미디어키 |
+| adKey | 광고키 |
+| uid | 유저 ID |
+| adid | 유저 ADID |
+| info | SDK 예약 필드 |
+#### RESPONSE
+| 파라미터 | 내용 |
+| ------------------- | ------------------- |
+| code | 결과 CODE |
+| message | 결과 메시지 |
 
 ## 포스트백
 | 파라미터 | 내용 |
