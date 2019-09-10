@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
     // (로그인 후 1회만) 앱 로그인 완료 후 미디어키와 유저ID(유저를 식별할 수 있는 유니크한 값)로 초기화 한다.
     private void initializeGad(String mediaKey, String userId) {
         Gad.init(this, mediaKey, userId);
+        // (Optional) 고객의 성별, 나이를 알고 있다면 아래 설정을 통해 타겟팅 된 광고를 받아 볼 수 있다.
+        Gad.setUserInfo("M", 22);
     }
 
     // 새창(액티비티)으로 GAD를 보여준다.
@@ -95,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
     // (로그인 후 1회만) 앱 로그인 완료 후 미디어키와 유저ID(유저를 식별할 수 있는 유니크한 값)로 초기화 한다.
     private void initializeGad(String mediaKey, String userId) {
         Gad.init(this, mediaKey, userId);
+        // 고객의 성별, 나이를 알고 있다면 아래 설정을 통해 타겟팅 된 광고를 받아 볼 수 있다.
+        Gad.setUserInfo("M", 22);
     }
 
     // 리스트 아이템 클릭 시 GAD 광고인 경우 SDK를 통해 광고 상세 화면으로 이동한다.
