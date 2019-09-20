@@ -7,7 +7,7 @@
 
 ## CPA 완료 통지
 #### URL : https://gad.api.gpakorea.com/advertisement/comp
-#### REQUEST (POST)
+#### REQUEST (POST) Query Params
 | 파라미터 | 내용 |
 | --- | --- |
 | gad_tracking_id | GAD 트래킹 ID (광고 참여 신청시마다 발급) |
