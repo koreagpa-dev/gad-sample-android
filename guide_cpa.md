@@ -18,3 +18,12 @@
 | message | 결과 메시지 |
 
 - 참고 : [결과코드](https://github.com/koreagpa-dev/gad-sample-android/blob/master/api-doc.md#%EA%B2%B0%EA%B3%BC-%EC%BD%94%EB%93%9C)
+
+
+## CPA 완료 통지 (Deprecated)
+#### URL : https://gad.api.gpakorea.com/advertisement/comp
+#### REQUEST (POST)
+| 파라미터 | 내용 |
+| --- | --- |
+| ai | GAD 광고 ID (광고 등록시 발급) |
+| uid | 유저 식별 코드 (adid) |
