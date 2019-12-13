@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeGad() {
         Gad.init(this, mBinding.mediaKey.getText().toString(), mBinding.userId.getText().toString());
-        Gad.setUserInfo("M", 22);
+//        Gad.setUserInfo("M", 22);
 //        Gad.setProgressAnimation(true);
     }
 }
