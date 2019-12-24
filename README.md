@@ -87,28 +87,24 @@ public class MainActivity extends AppCompatActivity {
     - 링크 : [포스트백 API DOCUMENT](https://github.com/koreagpa-dev/gad-sample-android/blob/master/api-doc.md#%ED%8F%AC%EC%8A%A4%ED%8A%B8%EB%B0%B1)
     
 #### API 방식 사용시
+- 2019.12.24 Gad.goDetail 메소드가 Deprecated 됐습니다.
 - GAD 광고 참여시 내부 로직을 사용하므로 SDK 연동은 동일하게 필요합니다.
-- [광고목록](https://github.com/koreagpa-dev/gad-sample-android/blob/master/api-doc.md#%EA%B4%91%EA%B3%A0-%EB%AA%A9%EB%A1%9D)을 요청해서 리스트를 구성합니다.
-- 리스트 아이템이 클릭 됐을때 GAD 광고인지 체크해서 분기해 줍니다.
+- 최종적으로 광고페이지로 이동하고자 할때 Gad.join(Context context, String adKey)를 호출하면 됩니다.
 ```java
 public class MainActivity extends AppCompatActivity {
     
-    // GAD 초기화 함수. 가장 먼저 호출 필요
-    // (로그인 후 1회만) 앱 로그인 완료 후 미디어키와 유저ID(유저를 식별할 수 있는 유니크한 값)로 초기화 한다.
-    private void initializeGad(String mediaKey, String userId) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
         Gad.init(this, mediaKey, userId);
         // 고객의 성별, 나이를 알고 있다면 아래 설정을 통해 타겟팅 된 광고를 받아 볼 수 있다.
         Gad.setUserInfo("M", 22);
+        // Gad.setProgressAnimation(false);
     }
 
-    // 리스트 아이템 클릭 시 GAD 광고인 경우 SDK를 통해 광고 상세 화면으로 이동한다.
-    private void onItemClick(...) {
-        if (클릭된 광고가 GAD 인 경우) {
-            Gad.goDetail(MainActivity.this, "{광고키}");
-        } else {
-            ...
-        }
+    // Gad광고를 수행하기 위해서는 광고참여신청 후 아래와 같이 SDK를 통해 광고페이지로 이동시킨다.
+    private void join(String adKey) {
+        Gad.join(MainActivity.this, adKey);
     }
 }
 ```
-- 상세화면으로 이동후의 과정은 SDK 방식과 동일합니다.

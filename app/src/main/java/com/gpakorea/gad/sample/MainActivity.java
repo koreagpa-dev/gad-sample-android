@@ -13,8 +13,8 @@ import androidx.databinding.DataBindingUtil;
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mBinding;
     
-    private static final String MEDIA_KEY = "{INSERT_MEDIA_KEY}";
-    private static final String USER_ID = "{INSERT_USER_ID}";
+    private String MEDIA_KEY = "{INSERT_MEDIA_KEY}";
+    private String USER_ID = "{INSERT_USER_ID}";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,29 +39,33 @@ public class MainActivity extends AppCompatActivity {
                         .commitAllowingStateLoss();
             }
         });
+
+        Gad.init(this, MEDIA_KEY, USER_ID);
     }
 
     private boolean checkField() {
-        boolean isValid = true;
-        if (TextUtils.isEmpty(mBinding.mediaKey.getText())) {
-            isValid = false;
+        MEDIA_KEY = mBinding.mediaKey.getText().toString();
+        USER_ID = mBinding.userId.getText().toString();
+        
+        if (TextUtils.isEmpty(MEDIA_KEY)) {
             mBinding.mediaKeyLayout.setError("{MEDIA KEY}를 입력해 주세요.");
+            return false;
         } else {
             mBinding.mediaKeyLayout.setErrorEnabled(false);
         }
 
-        if (TextUtils.isEmpty(mBinding.userId.getText())) {
-            isValid = false;
+        if (TextUtils.isEmpty(USER_ID)) {
             mBinding.userIdLayout.setError("{USER ID}를 입력해 주세요.");
+            return false;
         } else {
             mBinding.userIdLayout.setErrorEnabled(false);
         }
-        return isValid;
+        return true;
     }
 
     private void initializeGad() {
-        Gad.init(this, mBinding.mediaKey.getText().toString(), mBinding.userId.getText().toString());
+        Gad.init(this, MEDIA_KEY, USER_ID);
 //        Gad.setUserInfo("M", 22);
-//        Gad.setProgressAnimation(true);
+//        Gad.setProgressAnimation(false);
     }
 }
