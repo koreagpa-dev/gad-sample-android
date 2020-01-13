@@ -1,5 +1,7 @@
 # GAD API DOCUMENT
 
+#### 문서에 정의되지 않은 필드들은 언제든지 변경 또는 제거될 수 있으니 정의된 필드만을 사용 바랍니다.
+
 ## 광고 목록
 #### URL : https://gad.api.gpakorea.com/advertisement/list
 #### REQUEST (GET)
@@ -24,7 +26,9 @@
 | mission | 참여방법 |
 | **app** | 앱정보 |
 | **detail** | 광고 상세 정보 |
-#### app
+| **target** | 광고 타겟 정보 |
+
+#### app (optional)
 | 파라미터 | 내용 |
 | ------------------- | ------------------- |
 | market | 마켓 종류 (1: 구글플레이, 2: 원스토어, 3: 웹, 9:etc) |
@@ -37,6 +41,12 @@
 | summary | 개요 |
 | description | 상세설명 |
 | image1 | 광고 이미지 |
+#### target (optional)
+| 파라미터 | 내용 |
+| ------------------- | ------------------- |
+| sex | 0: 공통, 1:남성만, 2:여성만 |
+| age_from | 최소연령 (0: 무제한) |
+| age_to | 최대연령 (0: 무제한) |
 
 ## 광고 참여 요청
 #### URL : https://gad.api.gpakorea.com/advertisement/join
@@ -47,7 +57,6 @@
 | adKey | 광고키 |
 | uid | 유저 ID |
 | adid | 유저 ADID |
-| info | SDK 예약 필드 |
 | data | 매체사 데이터 (포스트백에서 전송받을 데이터) |
 #### RESPONSE
 | 파라미터 | 내용 |
