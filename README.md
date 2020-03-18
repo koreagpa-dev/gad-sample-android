@@ -108,3 +108,33 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
+
+#### SDK API 21 미만 버전 및 에러 대응
+```java
+public class MyApplication extends Application {
+    
+    static {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+        }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+}
+```
+```groovy
+dependencies {
+    implementation 'com.android.support:multidex:1.0.3'
+    /* okhttp 3.13부터 API 21+ 만 지원 */
+    implementation('com.squareup.okhttp3:logging-interceptor:3.12.8') {
+        force = true
+    }
+    implementation("com.squareup.okhttp3:okhttp:3.12.8") {
+        force = true
+    }
+}
+```
