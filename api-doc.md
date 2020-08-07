@@ -58,6 +58,12 @@
 | uid | 유저 ID |
 | adid | 유저 ADID |
 | data | 매체사 데이터 (포스트백에서 전송받을 데이터) |
+| ip | 클라이언트 IP |
+| udid <sup>(권장) | widevine ID |
+| android_id <sup>(선택) | android id |
+| imei <sup>(선택) | IMEI |
+- 권장 또는 선택 값이 존재하지 않을 경우 광고 참여에 제약이 있을 수 있습니다.
+- [[가이드] widevine ID 값 얻기](https://github.com/koreagpa-dev/gad-sample-android#widevine-ID-값-얻기)
 #### RESPONSE
 | 파라미터 | 내용 |
 | ------------------- | ------------------- |
@@ -80,7 +86,7 @@
 | adKey | 광고키 |
 | uid | 유저 ID |
 | adid | 유저 ADID |
-| ip | 클라이언트IP |
+| ip | 클라이언트 IP |
 #### RESPONSE
 | 파라미터 | 내용 |
 | ------------------- | ------------------- |

@@ -138,3 +138,32 @@ dependencies {
     }
 }
 ```
+
+#### widevine ID 값 얻기
+- API 18 이상이며 구글플레이가 설치된 디바이스에서 사용가능합니다.
+```java
+public static String getWidevineId() {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
+        return "";
+    }
+    UUID WIDEVINE_UUID = new UUID(0xEDEF8BA979D64ACEL, 0xA3C827DCD51D21EDL);
+    MediaDrm mediaDrm = null;
+    String widevineId = null;
+    try {
+        mediaDrm = new MediaDrm(WIDEVINE_UUID);
+        byte[] arrUniqueId = mediaDrm.getPropertyByteArray(MediaDrm.PROPERTY_DEVICE_UNIQUE_ID);
+        widevineId = Base64.encodeToString(arrUniqueId, Base64.NO_WRAP).trim();
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        if (mediaDrm != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                mediaDrm.close();
+            } else {
+                mediaDrm.release();
+            }
+        }
+    }
+    return widevineId != null ? widevineId : "";
+}
+```
