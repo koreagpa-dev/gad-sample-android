@@ -55,7 +55,7 @@
 | --- | --- |
 | media | 미디어키 |
 | adKey | 광고키 |
-| uid | 유저 ID |
+| uid | 유저 ID (MAX:36) |
 | adid | 유저 ADID |
 | data | 매체사 데이터 (포스트백에서 전송받을 데이터) |
 | ip | 클라이언트 IP |
@@ -84,7 +84,7 @@
 | --- | --- |
 | media | 미디어키 |
 | adKey | 광고키 |
-| uid | 유저 ID |
+| uid | 유저 ID (MAX:36) |
 | adid | 유저 ADID |
 | ip | 클라이언트 IP |
 #### RESPONSE
