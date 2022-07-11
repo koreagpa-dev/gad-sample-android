@@ -29,10 +29,18 @@ android {
     }
 }
 ```
-- 참고 사이트
-    - MultiDex : https://developer.android.com/studio/build/multidex.html?hl=ko
-    - 데이터바인딩 : https://developer.android.com/topic/libraries/data-binding/start.html?hl=ko
-    - Java 8 : https://developer.android.com/studio/write/java8-support?hl=ko
+
+## TargetSdkVersion 33 (Android 13) 이상인 경우
+- 매니페스트 파일에서 Google Play 서비스 일반 권한을 다음과 같이 선언해야 합니다.
+```xml
+<uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+```
+
+## 참고 사이트
+- MultiDex : https://developer.android.com/studio/build/multidex.html?hl=ko
+- 데이터바인딩 : https://developer.android.com/topic/libraries/data-binding/start.html?hl=ko
+- Java 8 : https://developer.android.com/studio/write/java8-support?hl=ko
+- AD_ID : https://support.google.com/googleplay/android-developer/answer/6048248?hl=ko
 
 ## GAD SDK 라이브러리 사용
 #### 프로젝트 설정
@@ -85,29 +93,6 @@ public class MainActivity extends AppCompatActivity {
 
 - 광고 참여를 완료하면 [미디어에 등록된 URL로 포스트백](https://github.com/koreagpa-dev/gad-sample-android/blob/master/guide_media.md#%EB%AF%B8%EB%94%94%EC%96%B4-%EC%97%B0%EB%8F%99-%EC%A0%95%EB%B3%B4-%EC%9E%85%EB%A0%A5%ED%95%98%EA%B8%B0)을 전송합니다.
 - 링크 : [포스트백 API DOCUMENT](https://github.com/koreagpa-dev/gad-sample-android/blob/master/api-doc.md#%ED%8F%AC%EC%8A%A4%ED%8A%B8%EB%B0%B1)
-    
-#### API 방식 사용시
-- 2019.12.24 Gad.goDetail 메소드가 Deprecated 됐습니다.
-- GAD 광고 참여시 내부 로직을 사용하므로 SDK 연동은 동일하게 필요합니다.
-- 최종적으로 광고페이지로 이동하고자 할때 Gad.join(Context context, String adKey)를 호출하면 됩니다.
-```java
-public class MainActivity extends AppCompatActivity {
-    
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        ...
-        Gad.init(this, mediaKey, userId);
-        // 고객의 성별, 나이를 알고 있다면 아래 설정을 통해 타겟팅 된 광고를 받아 볼 수 있다.
-        Gad.setUserInfo("M", 22);
-        // Gad.setProgressAnimation(false);
-    }
-
-    // Gad광고를 수행하기 위해서는 광고참여신청 후 아래와 같이 SDK를 통해 광고페이지로 이동시킨다.
-    private void join(String adKey) {
-        Gad.join(MainActivity.this, adKey);
-    }
-}
-```
 
 #### SDK API 21 미만 버전 및 에러 대응
 ```java
@@ -128,7 +113,7 @@ public class MyApplication extends Application {
 ```
 ```groovy
 dependencies {
-    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'androidx.multidex:multidex:2.0.1'
     /* okhttp 3.13부터 API 21+ 만 지원 */
     implementation('com.squareup.okhttp3:logging-interceptor:3.12.8') {
         force = true
@@ -165,5 +150,29 @@ public static String getWidevineId() {
         }
     }
     return widevineId != null ? widevineId : "";
+}
+```
+
+#### API 방식 사용시 (Deprecated)
+- SDK를 이용한 API 방식 지원이 종료됐습니다.
+- 2019.12.24 Gad.goDetail 메소드가 Deprecated 됐습니다.
+- GAD 광고 참여시 내부 로직을 사용하므로 SDK 연동은 동일하게 필요합니다.
+- 최종적으로 광고페이지로 이동하고자 할때 Gad.join(Context context, String adKey)를 호출하면 됩니다.
+```java
+public class MainActivity extends AppCompatActivity {
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+        Gad.init(this, mediaKey, userId);
+        // 고객의 성별, 나이를 알고 있다면 아래 설정을 통해 타겟팅 된 광고를 받아 볼 수 있다.
+        Gad.setUserInfo("M", 22);
+        // Gad.setProgressAnimation(false);
+    }
+
+    // Gad광고를 수행하기 위해서는 광고참여신청 후 아래와 같이 SDK를 통해 광고페이지로 이동시킨다.
+    private void join(String adKey) {
+        Gad.join(MainActivity.this, adKey);
+    }
 }
 ```
