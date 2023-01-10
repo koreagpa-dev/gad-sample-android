@@ -7,85 +7,49 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/media_key_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:hint="MEDIA KEY"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/user_id_layout"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/media_key"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/user_id_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:hint="USER ID"
-            app:layout_constraintLeft_toRightOf="@id/media_key_layout"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/user_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_activity"
+            android:id="@+id/button_launch"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="액티비티로 열기"
+            android:text="캐시톡톡 실행"
             android:textColor="@android:color/black"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/button_fragment"
-            app:layout_constraintTop_toBottomOf="@id/user_id_layout"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
             app:strokeColor="@android:color/black"
             app:strokeWidth="2dp"/>
 
         <Button
-            android:id="@+id/button_fragment"
+            android:id="@+id/button_on"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="프레그먼트로 열기"
+            android:text="톡톡 아이콘 ON"
             android:textColor="@android:color/black"
-            app:layout_constraintLeft_toRightOf="@id/button_activity"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/user_id_layout"
+            app:layout_constraintTop_toBottomOf="@id/button_launch"
             app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
             app:strokeColor="@android:color/black"
             app:strokeWidth="2dp"/>
 
-        <FrameLayout
-            android:id="@+id/fragment"
+        <Button
+            android:id="@+id/button_off"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="톡톡 아이콘 OFF"
+            android:textColor="@android:color/black"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_activity"/>
+            app:layout_constraintTop_toBottomOf="@id/button_on"
+            app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
+            app:strokeColor="@android:color/black"
+            app:strokeWidth="2dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
