@@ -17,6 +17,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
+        // 앱 실행시 톡톡버튼 보여주기
+        CashTalkTalk.showFloatingView(this);
+
+        /**
+         * 테스트 코드
+         */
         mBinding.buttonLaunch.setOnClickListener(v -> {
             // 캐시톡톡 실행 (메인 UI 팝업)
             CashTalkTalk.launch(this);

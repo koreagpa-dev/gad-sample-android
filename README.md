@@ -2,8 +2,8 @@
 
 - 이 프로젝트는 캐시톡톡을 적용한 샘플앱으로 아래 가이드 한 내용을 포함하고 있습니다.
 - GAD 오퍼월 사이트에 앱 등록은 [GAD 미디어 설정하기](https://github.com/koreagpa-dev/gad-sample-android/blob/cashtalktalk/guide_media.md#gad-%EB%AF%B8%EB%94%94%EC%96%B4-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0) 페이지를 참고 바랍니다.
-- 캐시톡톡 연동시 연동타입을 '캐시톡톡'으로 설정 바랍니다.
-- 캐시톡톡은 별도 서버가 필요치 않으므로 연동정보를 추가로 입력할 필요가 없습니다.
+- 캐시톡톡은 별도 서버가 필요치 않으며 관리자가 별도로 세팅해드립니다.
+- [캐시톡톡 세팅요청하기](https://open.kakao.com/o/slURBiHc)
 
 ## Gradle 설정
 - 모듈 수준의 build.gradle 파일에서 아래 코드를 추가합니다.
@@ -78,7 +78,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
+        ...
+        // 앱 실행시 톡톡버튼 보여주기
+        CashTalkTalk.showFloatingView(this);
+        ...
+        
+        /**
+         * 테스트 코드
+         */
         mBinding.buttonLaunch.setOnClickListener(v -> {
             // 캐시톡톡 실행 (메인 UI 팝업)
             CashTalkTalk.launch(this);
