@@ -58,5 +58,5 @@ dependencies {
             strictly "3.12.8"
         }
     }
-    implementation 'com.github.koreagpa-dev:cashtalktalk:0.2.1'
+    implementation 'com.github.koreagpa-dev:cashtalktalk:0.2.2'
 }
