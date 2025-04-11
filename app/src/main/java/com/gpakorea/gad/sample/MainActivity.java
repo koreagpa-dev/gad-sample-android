@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Gad.init(this, MEDIA_KEY, USER_ID);
+
+        initializeGad();
     }
 
     private boolean checkField() {
