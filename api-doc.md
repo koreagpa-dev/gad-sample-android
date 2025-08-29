@@ -57,7 +57,7 @@
 | media | 미디어키 |
 | adKey | 광고키 |
 | uid | 유저 ID (MAX:36) |
-| adid | 유저 ADID |
+| adid | 유저 ADID / 유저 IDFA |
 | data | 매체사 데이터 (포스트백에서 전송받을 데이터) |
 | ip | 클라이언트 IP |
 | udid <sup>(권장) | widevine ID |
@@ -86,7 +86,7 @@
 | media | 미디어키 |
 | adKey | 광고키 |
 | uid | 유저 ID (MAX:36) |
-| adid | 유저 ADID |
+| adid | 유저 ADID / 유저 IDFA |
 | ip | 클라이언트 IP |
 #### RESPONSE
 | 파라미터 | 내용 |
