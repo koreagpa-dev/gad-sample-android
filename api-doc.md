@@ -1,9 +1,13 @@
 # GAD API DOCUMENT
 
 #### 문서에 정의되지 않은 필드들은 언제든지 변경 또는 제거될 수 있으니 정의된 필드만을 사용 바랍니다.
+#### 기존 URL 도 지원합니다.
+#### (기존) https://gad.api.gpakorea.com/advertisement
+#### (변경) https://gad.api.gpakorea.com/campaign
+
 
 ## 광고 목록
-#### URL : https://gad.api.gpakorea.com/advertisement/list
+#### URL : https://gad.api.gpakorea.com/campaign/list
 #### REQUEST (GET)
 | 파라미터 | 내용 |
 | ------------------- | ------------------- |
@@ -25,6 +29,7 @@
 | point      | 적립 포인트                                           |
 | icon       | 광고 아이콘                                           |
 | mission    | 참여방법                                             |
+| platform   | 플랫폼(비트연산) (1: AOS, 2: iOS, 3: AOS+iOS)           |
 | **app**    | 앱정보                                              |
 | **detail** | 광고 상세 정보                                         |
 | **target** | 광고 타겟 정보                                         |
@@ -50,7 +55,7 @@
 | age_to | 최대연령 (0: 무제한) |
 
 ## 광고 참여 요청
-#### URL : https://gad.api.gpakorea.com/advertisement/join
+#### URL : https://gad.api.gpakorea.com/campaign/join
 #### REQUEST (POST)
 | 파라미터 | 내용 |
 | --- | --- |
@@ -77,9 +82,29 @@
 | ... | SDK 에약 필드 |
 | url | 이 값이 존재하는 경우 광고 URL로 사용해야함 |
 
+## 참여상태조회
+- 현재 참여 상태를 조회
+#### URL : https://gad.api.gpakorea.com/campaign/
+#### REQUEST (GET)
+| 파라미터 | 내용 |
+| --- | --- |
+| media | 미디어키 |
+| adKey | 광고키 |
+| uid | 유저 ID (MAX:36) |
+| adid | 유저 ADID / 유저 IDFA |
+
+#### RESPONSE
+| 파라미터 | 내용 |
+| ------------------- | ------------------- |
+| code | 결과 CODE |
+| message | 결과 메시지 |
+- 예) 미션을 제출한 상태인 경우 code: 24 로 전달됩니다.
+- 예) 기참여 또는 적립된 경우 code: 30 으로 전달됩니다.
+
+
 ## 설치완료(advertisement type=1, 설치형만 해당)
 - 앱 설치 확인 후 호출
-#### URL : https://gad.api.gpakorea.com/advertisement/complete
+#### URL : https://gad.api.gpakorea.com/campaign/complete
 #### REQUEST (POST)
 | 파라미터 | 내용 |
 | --- | --- |
