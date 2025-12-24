@@ -46,7 +46,8 @@
 | require | 광고에 필요한 정보 (ex. 카페닉네임, 사전예약전화번호, 댓글아이디) |
 | summary | 개요 |
 | description | 상세설명 |
-| image1 | 광고 이미지 |
+| image1 | (optional) 광고 도움 이미지 (참여방법) |
+| image2 | (optional) 썸네일 (720X360 이미지 소재) |
 #### target (optional)
 | 파라미터 | 내용 |
 | ------------------- | ------------------- |
