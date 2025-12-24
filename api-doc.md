@@ -85,7 +85,7 @@
 
 ## 참여상태조회
 - 현재 참여 상태를 조회
-#### URL : https://gad.api.gpakorea.com/campaign/
+#### URL : https://gad.api.gpakorea.com/campaign/status
 #### REQUEST (GET)
 | 파라미터 | 내용 |
 | --- | --- |
