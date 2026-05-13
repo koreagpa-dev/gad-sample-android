@@ -73,15 +73,14 @@
 | package | 패키지명 |
 | scheme | custom url scheme |
 #### detail
-| 파라미터 | 내용 |
-| ------------------- | ------------------- |
-| require | 광고에 필요한 정보 (ex. 카페닉네임, 사전예약전화번호, 댓글아이디) |
-| summary | 개요 |
+| 파라미터        | 내용 |
+|-------------| ------------------- |
+| require     | 광고에 필요한 정보 (ex. 카페닉네임, 사전예약전화번호, 댓글아이디) |
+| summary     | 개요 |
 | description | 상세설명 |
-| image1 | (optional) 광고 도움 이미지 (참여방법) |
-| image2 | (optional) 썸네일 (720X360 이미지 소재) |
-| image3 | (iOS, optional) 네트워크 배너 (1200X627 이미지 소재) |
-| image4 | (iOS, optional) 상세 배너 (720X780 이미지 소재) |
+| image1      | (optional) 광고 도움 이미지 (참여방법) |
+| image2      | (optional) 썸네일 (720X360 이미지 소재) |
+| image3      | (iOS, optional) 상세 배너 (720X780 이미지 소재) |
 #### target (optional)
 | 파라미터 | 내용 |
 | ------------------- | ------------------- |
